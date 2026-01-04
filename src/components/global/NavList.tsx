@@ -22,10 +22,10 @@ export function NavList() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-primary-dark/95 backdrop-blur-md text-white">
       <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="font-display text-2xl font-bold text-primary-dark tracking-tighter">
+        <Link href="/" className="font-display text-2xl font-bold text-white tracking-tighter">
           NOVASOU
         </Link>
 
@@ -36,13 +36,13 @@ export function NavList() {
               key={item.href}
               href={item.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary relative group",
-                pathname === item.href ? "text-primary font-bold" : "text-gray-600"
+                "text-sm font-medium transition-colors hover:text-blue-200 relative group",
+                pathname === item.href ? "text-white font-bold" : "text-gray-300"
               )}
             >
               {item.label}
               <span className={cn(
-                "absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all group-hover:w-full",
+                "absolute -bottom-1 left-0 h-0.5 w-0 bg-white transition-all group-hover:w-full",
                  pathname === item.href && "w-full"
               )}/>
             </Link>
@@ -51,13 +51,13 @@ export function NavList() {
 
         <div className="hidden lg:flex items-center gap-4">
           <Link href="/careers">
-            <Button size="sm">View Open Roles</Button>
+            <Button size="sm" className="bg-white text-primary-dark hover:bg-gray-100">View Open Roles</Button>
           </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button
-          className="lg:hidden p-2 text-gray-600"
+          className="lg:hidden p-2 text-white"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -66,23 +66,23 @@ export function NavList() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="lg:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-100 shadow-lg py-6 px-4 flex flex-col gap-4 animate-accordion-down">
+        <div className="lg:hidden absolute top-20 left-0 w-full bg-primary-dark border-b border-white/10 shadow-lg py-6 px-4 flex flex-col gap-4 animate-accordion-down text-white">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setIsOpen(false)}
               className={cn(
-                "text-lg font-medium py-2 px-2 rounded-md hover:bg-gray-50",
-                pathname === item.href && "text-primary bg-blue-50/50"
+                "text-lg font-medium py-2 px-2 rounded-md hover:bg-white/10",
+                pathname === item.href && "text-white bg-white/10"
               )}
             >
               {item.label}
             </Link>
           ))}
-          <div className="pt-4 mt-2 border-t border-gray-100">
+          <div className="pt-4 mt-2 border-t border-white/10">
              <Link href="/careers" onClick={() => setIsOpen(false)}>
-                <Button className="w-full">View Open Roles</Button>
+                <Button className="w-full bg-white text-primary-dark hover:bg-gray-100">View Open Roles</Button>
              </Link>
           </div>
         </div>
