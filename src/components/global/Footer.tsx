@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 
 export function Footer() {
   return (
-    <footer className="bg-linear-to-r from-gradient-start to-gradient-end text-white pt-20 pb-10">
+    <footer className="bg-gradient-to-br from-[#284BE3] to-[#002CAD] text-white pt-20 pb-10">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
           {/* Brand Column */}
