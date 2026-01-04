@@ -1,57 +1,79 @@
 import { Button } from "@/components/ui/Button";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 interface HeroSectionProps {
-  headline: string;
-  subheading: string;
-  primaryCtaText: string;
-  primaryCtaLink: string;
-  secondaryCtaText: string;
-  secondaryCtaLink: string;
-  backgroundImageUrl?: string; // Optional for dynamic images later
+  headline?: string;
+  subheading?: string;
+  primaryCtaText?: string;
+  primaryCtaLink?: string;
+  secondaryCtaText?: string;
+  secondaryCtaLink?: string;
+  backgroundImageUrl?: string; 
 }
 
 export function HeroSection({
-  headline,
-  subheading,
-  primaryCtaText,
-  primaryCtaLink,
-  secondaryCtaText,
-  secondaryCtaLink,
+  headline = "BUILD GLOBAL PRODUCTS - WORK FROM THAILAND",
+  subheading = "For Thai & international tech talent",
+  primaryCtaText = "View Open Roles",
+  primaryCtaLink = "/careers",
+  secondaryCtaText = "For Companies",
+  secondaryCtaLink = "/contact",
 }: HeroSectionProps) {
   return (
-    <section className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden bg-primary-dark text-white">
-      {/* Background Gradient/Mesh */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-dark via-[#0a1e5c] to-primary pointer-events-none" />
+    <section className="relative w-full min-h-screen flex items-center pt-32 pb-12 overflow-hidden bg-gradient-to-br from-[#284BE3] to-[#002CAD] text-white">
       
-      {/* Radial overlay to focus center */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#04184C_80%)] pointer-events-none" />
+      {/* Background Dotted Pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:20px_20px] opacity-40 pointer-events-none" />
 
-      {/* Grid Pattern (Optional aesthetic) */}
-      <div className="absolute inset-0 opacity-10 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-
-      <div className="container relative z-10 px-4 md:px-6 flex flex-col items-center text-center max-w-5xl mx-auto">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-5 duration-700 bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-gray-400">
-          {headline}
-        </h1>
+      {/* Grid Layout */}
+      <div className="container relative z-10 px-4 md:px-6 mx-auto grid lg:grid-cols-2 gap-12 items-center">
         
-        <p className="text-lg md:text-2xl text-gray-300 font-light max-w-2xl mb-10 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
-          {subheading}
-        </p>
+        {/* Text Content */}
+        <div className="flex flex-col items-start text-left space-y-6">
+          <span className="text-lg md:text-xl font-medium text-blue-100 tracking-wide">
+             {subheading}
+          </span>
+          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] uppercase">
+            {headline}
+          </h1>
+          <p className="text-lg md:text-xl text-blue-50 max-w-xl leading-relaxed">
+            Novasou connects global companies with talented people who wants to build meaningful careers in Thailand.
+            <br/><br/>
+            Whether you already call Thailand your home or you're moving from abroad, we help you connect with global product teams in a Nordic-Thai work culture.
+          </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-          <Link href={primaryCtaLink}>
-            <Button size="lg" className="w-full sm:w-auto min-w-[200px] shadow-lg shadow-blue-900/50 hover:shadow-blue-900/80 hover:scale-105 transition-all">
-              {primaryCtaText}
-            </Button>
-          </Link>
-          <Link href={secondaryCtaLink}>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto min-w-[200px] border-white/20 text-white hover:bg-white/10">
-              {secondaryCtaText}
-            </Button>
-          </Link>
+          <div className="flex flex-wrap gap-4 mt-4">
+            <Link href={primaryCtaLink}>
+              <Button size="lg" className="bg-white text-primary-dark hover:bg-gray-100 rounded-full px-8 text-base font-bold min-w-[180px]">
+                {primaryCtaText}
+              </Button>
+            </Link>
+            <Link href={secondaryCtaLink}>
+              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 rounded-full px-8 text-base font-bold min-w-[180px]">
+                {secondaryCtaText}
+              </Button>
+            </Link>
+          </div>
         </div>
+
+        {/* Image Content */}
+        <div className="relative w-full h-full min-h-[400px] flex justify-center lg:justify-end items-center">
+           <div className="relative w-full max-w-lg aspect-[4/5] rounded-[3rem] rounded-tl-none rounded-br-none overflow-hidden border-4 border-white/10 shadow-2xl">
+              {/* Using a placeholder image or the one from previous context if available. 
+                  Since I don't have the exact image file, I will use a high quality office abstract or verify if I can use a placeholder service. 
+                  For now, replacing with a generic work image placeholder. */}
+              <img 
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop" 
+                alt="Woman working at computer" 
+                className="object-cover w-full h-full"
+              />
+              
+              {/* Decorative elements */}
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-400/20 rounded-full blur-3xl" />
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-400/20 rounded-full blur-3xl" />
+           </div>
+        </div>
+
       </div>
     </section>
   );

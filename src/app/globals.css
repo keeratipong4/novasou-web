@@ -6,6 +6,8 @@
   --color-gray-light: #EAEAEA;
   --color-background: #FFFFFF;
   --color-foreground: #1A1A1A;
+  --color-gradient-start: #284BE3;
+  --color-gradient-end: #002CAD;
   
   --font-display: var(--font-audiowide);
   --font-body: var(--font-titillium);

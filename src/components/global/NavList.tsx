@@ -9,12 +9,11 @@ import { useState } from "react";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/about-us" },
-  { label: "Teams", href: "/teams" },
+  { label: "Careers", href: "/careers" },
   { label: "Life at Novasou", href: "/life-at-novasou" },
   { label: "Growth & Benefits", href: "/growth-benefits" },
-  { label: "Careers", href: "/careers" },
-  { label: "Contact", href: "/contact" },
+  { label: "About Us", href: "/about-us" },
+  { label: "For Companies", href: "/for-companies" },
 ];
 
 export function NavList() {
@@ -22,11 +21,17 @@ export function NavList() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-primary-dark/95 backdrop-blur-md text-white">
-      <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
+    <header className="fixed top-0 z-50 w-full border-b border-transparent bg-gradient-to-r from-gradient-start/90 to-gradient-end/90 backdrop-blur-sm transition-all duration-300">
+      <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="font-display text-2xl font-bold text-white tracking-tighter">
-          NOVASOU
+        <Link href="/" className="flex flex-col items-center group">
+           {/* Placeholder Icon imitating the N logo */}
+           <div className="bg-white text-primary rounded-lg p-1 mb-1">
+             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+               <path d="M2 2L12 22L22 2" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+             </svg>
+           </div>
+           <span className="font-display text-xl font-bold text-white tracking-widest leading-none">NOVASOU</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -36,22 +41,18 @@ export function NavList() {
               key={item.href}
               href={item.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-blue-200 relative group",
-                pathname === item.href ? "text-white font-bold" : "text-gray-300"
+                "text-sm font-medium transition-colors hover:text-white/80 relative group text-white",
+                pathname === item.href ? "font-bold" : ""
               )}
             >
               {item.label}
-              <span className={cn(
-                "absolute -bottom-1 left-0 h-0.5 w-0 bg-white transition-all group-hover:w-full",
-                 pathname === item.href && "w-full"
-              )}/>
             </Link>
           ))}
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <Link href="/careers">
-            <Button size="sm" className="bg-white text-primary-dark hover:bg-gray-100">View Open Roles</Button>
+          <Link href="/contact">
+            <Button className="bg-white text-primary-dark hover:bg-gray-100 rounded-full px-8 font-bold">Contact</Button>
           </Link>
         </div>
 
@@ -66,7 +67,7 @@ export function NavList() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="lg:hidden absolute top-20 left-0 w-full bg-primary-dark border-b border-white/10 shadow-lg py-6 px-4 flex flex-col gap-4 animate-accordion-down text-white">
+        <div className="lg:hidden absolute top-20 left-0 w-full bg-linear-to-r from-gradient-start to-gradient-end border-b border-white/10 shadow-lg py-6 px-4 flex flex-col gap-4 animate-accordion-down text-white">
           {navItems.map((item) => (
             <Link
               key={item.href}
